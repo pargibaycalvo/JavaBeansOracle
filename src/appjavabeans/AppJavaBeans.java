@@ -24,6 +24,8 @@ public class AppJavaBeans {
 //        m.consultaPed("Select * from pedidos");
 //        m.consultaVen("Select * from ventas");
         m.obterUltimoID("productos");
+//        m.inxerirVenta(null); -
+        m.cerrarCon();
     }
     
 }

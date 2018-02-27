@@ -46,6 +46,16 @@ public class Metodos {
 
     }
 
+    //cerrar la base
+    public void cerrarCon() {
+        try {
+            conn.close();
+        } catch (SQLException ex) {
+            System.out.println("Error al cerrar la base");
+            Logger.getLogger(Metodos.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
     //consulta de productos
     public ArrayList<Producto> consultaPro(String consulta) throws SQLException {
         try {
@@ -114,6 +124,24 @@ public class Metodos {
             System.out.println("Error, verificar que la base este conectada " + ex.getMessage());
         }
         return id;
+
+    }
+
+    //cubrir una venta
+    public int inxerirVenta(Venta ven) {
+        int ins = 0;
+        try {
+            Statement st = conn.createStatement();
+            resul = st.executeQuery("insert into values"
+                    + ven.getId() + " , "
+                    + ven.getIdproducto() + " , "
+                    + ven.getCantidad() + " , "
+                    + ven.getFechaventa());
+            ins = 1;
+        } catch (SQLException ex) {
+            System.out.println("Error, verificar que la base este conectada " + ex.getMessage());
+        }
+        return ins;
 
     }
 }
